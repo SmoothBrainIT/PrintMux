@@ -1,5 +1,7 @@
 # PrintMux
 
+![PrintMux Logo](frontend/src/img/printmux-logo.png)
+
 PrintMux is an open-source middleware layer that lets slicers upload once and dispatch to many 3D printers. It presents both a Moonraker-compatible API and a minimal OctoPrint-compatible API for slicers, then routes jobs to one or more downstream printers from the web UI.
 
 ## Features
