@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrintMux Docs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a href="index.html" style="display: inline-flex; align-items: center; gap: 0.6rem;">
+          <img src="assets/printmux-logo.png" alt="PrintMux logo" style="height: 44px;" />
+          <strong>PrintMux</strong>
+        </a>
+        <nav class="nav-links">
+          <a href="/index.html#features">Features</a>
+          <a href="/docs.html">Docs</a>
+          <a href="/index.html#cta">Get Started</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container docs-layout">
+      <aside class="docs-sidebar">
+        <a href="#overview">Overview</a>
+        <a href="#quick-start">Quick Start</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#api">API</a>
+        <a href="#operations">Operations</a>
+        <a href="#security">Security</a>
+        <a href="#faq">FAQ</a>
+      </aside>
+
+      <div>
+        <section id="overview" class="docs-section">
+          <h2>Overview</h2>
+          <p>
+            PrintMux is an open-source middleware layer that lets slicers upload once and dispatch to
+            multiple printers. It presents Moonraker-compatible and minimal OctoPrint-compatible APIs
+            with a unified dispatch UI.
+          </p>
+        </section>
+
+        <section id="quick-start" class="docs-section">
+          <h2>Quick Start (Docker Compose)</h2>
+          <ol style="line-height: 1.7;">
+            <li>
+              Install Docker Desktop.
+              <a href="https://docs.docker.com/desktop/" target="_blank" rel="noreferrer">Official install guide</a>
+            </li>
+            <li>
+              Install Git (if needed).
+              <a href="https://git-scm.com/downloads" target="_blank" rel="noreferrer">Git downloads</a>
+            </li>
+            <li>Clone the PrintMux repo:</li>
+          </ol>
+          <div class="code-block">
+            <button class="copy-btn" type="button">Copy</button>
+            <pre style="white-space: pre-wrap;">git clone https://github.com/your-org/your-repo.git
+cd your-repo</pre>
+          </div>
+          <ol style="line-height: 1.7;" start="4">
+            <li>Update the root <code>.env</code> file (already included):</li>
+          </ol>
+          <div class="code-block">
+            <button class="copy-btn" type="button">Copy</button>
+            <pre style="white-space: pre-wrap;">PRINTMUX_BACKEND_PORT=8000
+PRINTMUX_FRONTEND_PORT=5173
+VITE_API_BASE=http://localhost:8000</pre>
+          </div>
+          <ol style="line-height: 1.7;" start="5">
+            <li>
+              Optional: edit <code>docker/.env</code> to change ports.
+              Defaults are <code>8000</code> (backend) and <code>5173</code> (frontend).
+            </li>
+            <li>Build and start the stack:</li>
+          </ol>
+          <div class="code-block">
+            <button class="copy-btn" type="button">Copy</button>
+            <pre style="white-space: pre-wrap;">docker compose up --build</pre>
+          </div>
+          <ol style="line-height: 1.7;" start="7">
+            <li>Open the UI in your browser:</li>
+          </ol>
+          <div class="code-block">
+            <button class="copy-btn" type="button">Copy</button>
+            <pre style="white-space: pre-wrap;">http://localhost:5173</pre>
+          </div>
+
+          <p style="margin-top: 1rem;"><strong>Notes</strong></p>
+          <ul style="line-height: 1.6;">
+            <li>If you changed ports, update the URL accordingly.</li>
+            <li>Use <code>CTRL + C</code> to stop the stack.</li>
+            <li><code>docker/.env.example</code> is kept for reference; the root <code>.env</code> is the source of truth.</li>
+          </ul>
+
+          <h3 style="margin-top: 2rem;">Quick Start (Manual)</h3>
+          <p>Install prerequisites:</p>
+          <ul style="line-height: 1.6;">
+            <li>
+              Python 3.11+
+              <a href="https://www.python.org/downloads/" target="_blank" rel="noreferrer">Python downloads</a>
+            </li>
+            <li>
+              Node.js 18+
+              <a href="https://nodejs.org/en/download" target="_blank" rel="noreferrer">Node.js downloads</a>
+            </li>
+          </ul>
+          <p>Backend:</p>
+          <div class="code-block">
+            <button class="copy-btn" type="button">Copy</button>
+            <pre style="white-space: pre-wrap;">python -m venv .venv
+.venv/Scripts/activate
+pip install -r backend/requirements.txt
+uvicorn backend.app.main:app --reload --port 8000</pre>
+          </div>
+          <p>Frontend:</p>
+          <div class="code-block">
+            <button class="copy-btn" type="button">Copy</button>
+            <pre style="white-space: pre-wrap;">cd frontend
+npm install
+npm run dev</pre>
+          </div>
+        </section>
+
+        <section id="architecture" class="docs-section">
+          <h2>Architecture</h2>
+          <p>
+            PrintMux sits between slicers and printers. Jobs are stored on disk, metadata is stored in
+            the database, and dispatch is handled per-printer.
+          </p>
+          <div class="media-placeholder">Architecture Diagram Placeholder</div>
+        </section>
+
+        <section id="api" class="docs-section">
+          <h2>API</h2>
+          <p>Key endpoints include:</p>
+          <div class="code-block">
+            <button class="copy-btn" type="button">Copy</button>
+            <pre style="white-space: pre-wrap;">GET /api/printers
+GET /api/printers/status
+POST /api/jobs/{job_id}/dispatch
+POST /api/octoprint/files/local
+POST /server/files/upload</pre>
+          </div>
+          <p>See full details in <code>docs/API.md</code>.</p>
+        </section>
+
+        <section id="operations" class="docs-section">
+          <h2>Operations</h2>
+          <p>
+            Configure storage and database paths via environment variables. Status polling includes a
+            per-printer timeout to avoid UI hangs.
+          </p>
+          <p>See <code>docs/OPERATIONS.md</code> for details.</p>
+        </section>
+
+        <section id="security" class="docs-section">
+          <h2>Security</h2>
+          <p>
+            Slicer access is protected by an API key. Use a strong key and avoid exposing the backend
+            directly to the public internet.
+          </p>
+        </section>
+
+        <section id="faq" class="docs-section">
+          <h2>FAQ</h2>
+          <p><strong>Does PrintMux proxy webcam streams?</strong> Not yet.</p>
+          <p><strong>Can I use Postgres?</strong> Yes, set <code>PRINTMUX_DATABASE_URL</code>.</p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer container">
+      <div>© 2026 PrintMux. All rights reserved.</div>
+    </footer>
+    <script>
+      document.querySelectorAll(".code-block").forEach((block) => {
+        const button = block.querySelector(".copy-btn");
+        const pre = block.querySelector("pre");
+        if (!button || !pre) return;
+        button.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(pre.innerText.trim());
+            button.textContent = "Copied";
+            button.setAttribute("data-copied", "true");
+            window.setTimeout(() => {
+              button.textContent = "Copy";
+              button.removeAttribute("data-copied");
+            }, 1400);
+          } catch (error) {
+            button.textContent = "Failed";
+            window.setTimeout(() => {
+              button.textContent = "Copy";
+            }, 1400);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
