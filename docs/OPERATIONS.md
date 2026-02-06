@@ -13,7 +13,12 @@
 - Downstream API timeouts use `PRINTMUX_OCTOPRINT_TIMEOUT_SECONDS` (default 60s).
 
 ## Docker Ports
-- Configure `PRINTMUX_BACKEND_PORT` and `PRINTMUX_FRONTEND_PORT` in `docker/.env` to change exposed ports.
+- Ports are optional. The base `docker-compose.yml` does not publish any host ports.
+- To expose ports, use the ports override file:
+  `docker compose -f docker-compose.yml -f docker-compose.ports.yml up -d`
+- If you are running from the `docker/` directory, use:
+  `docker compose -f docker-compose.yml -f docker-compose.ports.yml up -d`
+- Configure `PRINTMUX_BACKEND_PORT` and `PRINTMUX_FRONTEND_PORT` in the root `.env` to change exposed ports.
 - `VITE_API_BASE` should match the browser-accessible backend URL.
 
 ## Moonraker Compatibility

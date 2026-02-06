@@ -46,16 +46,40 @@ Frontend (via `frontend/.env`):
 See `.env.example` and `frontend/.env.example` for templates.
 
 ## Docker
+Linux (desktop or headless):
+1. Clone repo
 ```bash
-docker compose up --build
+git clone https://github.com/SmoothBrainIT/PrintMux.git
 ```
+2. `cd` into repo
+```bash
+cd PrintMux
+```
+3. Copy env
+```bash
+cp .env.example .env
+```
+4. Modify `.env` if needed
+```bash
+nano .env
+```
+5. Deploy
+```bash
+docker compose up -d
+```
+Optional: expose ports on the host
+```bash
+docker compose -f docker-compose.yml -f docker-compose.ports.yml up -d
+```
+6. Enjoy PrintMux!
 
 Repo: https://github.com/SmoothBrainIT/PrintMux
 Website: https://printmux.com
 Docs: https://printmux.com/docs.html
 
 ### Docker Environment Overrides
-Update the root `.env` to customize (used automatically by Docker Compose):
+Update the root `.env` to customize (used automatically by Docker Compose).
+Port values are only used if you include `docker-compose.ports.yml`:
 - `PRINTMUX_BACKEND_PORT` (default 8000)
 - `PRINTMUX_FRONTEND_PORT` (default 5173)
 - `VITE_API_BASE` (browser-facing backend URL)
