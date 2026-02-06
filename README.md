@@ -62,26 +62,6 @@ Update the root `.env` to customize (used automatically by Docker Compose):
 
 Note: `docker/.env.example` is kept for reference, but the root `.env` is the primary source of truth.
 
-## Website Deployment (Cloudflare Pages)
-- Root directory: `website`
-- Build command: `echo "no build"`
-- Output directory: `.`
-
-If you see a Wrangler "Missing entry-point" error, Pages is trying to deploy a Worker. Set the build command to `echo "no build"` and re-deploy.
-
-### Cloudflare Workers Static Assets (Alternative)
-```bash
-npx wrangler deploy
-```
-
-### Website Branch
-The public website now lives on a dedicated `website` branch that contains only the static site assets and Worker config.
-
-## Caveats and Workarounds
-- Status polling times out per printer after 8 seconds to avoid UI hangs.
-- Print state detection may fall back to progress signals if `print_stats.state` is not available.
-- Dispatch success indicates PrintMux accepted the request, not that downstream prints completed.
-
 See:
 - `docs/KNOWN_ISSUES.md`
 - `docs/OPERATIONS.md`
