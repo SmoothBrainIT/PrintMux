@@ -12,6 +12,9 @@ npx wrangler deploy
 
 This uses `wrangler.toml` and `website/worker.js` to serve static assets.
 
+## Branch Note
+This branch contains only the static website assets for PrintMux.
+
 ## Option 2: Git‑based Pages Deploy
 1. Push the repo to GitHub.
 2. In Cloudflare Pages, create a new project from the GitHub repo.
