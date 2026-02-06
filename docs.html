@@ -46,6 +46,9 @@
             multiple printers. It presents Moonraker-compatible and minimal OctoPrint-compatible APIs
             with a unified dispatch UI.
           </p>
+          <p>Repo: https://github.com/SmoothBrainIT/PrintMux</p>
+          <p>Website: https://printmux.com</p>
+          <p>Docs: https://printmux.com/docs.html</p>
         </section>
 
         <section id="quick-start" class="docs-section">
@@ -63,8 +66,8 @@
           </ol>
           <div class="code-block">
             <button class="copy-btn" type="button">Copy</button>
-            <pre style="white-space: pre-wrap;">git clone https://github.com/your-org/your-repo.git
-cd your-repo</pre>
+          <pre style="white-space: pre-wrap;">git clone https://github.com/SmoothBrainIT/PrintMux.git
+cd PrintMux</pre>
           </div>
           <ol style="line-height: 1.7;" start="4">
             <li>Update the root <code>.env</code> file (already included):</li>
@@ -160,6 +163,21 @@ POST /server/files/upload</pre>
             per-printer timeout to avoid UI hangs.
           </p>
           <p>See <code>docs/OPERATIONS.md</code> for details.</p>
+          <h3>Cloudflare Pages</h3>
+          <ul style="line-height: 1.6;">
+            <li>Root directory: <code>website</code></li>
+            <li>Build command: <code>echo "no build"</code></li>
+            <li>Output directory: <code>.</code></li>
+          </ul>
+          <p style="margin-top: 0.5rem;">
+            If you see a Wrangler “Missing entry-point” error, Pages is trying to deploy a Worker.
+            Set the build command to <code>echo "no build"</code> and re-deploy.
+          </p>
+          <h3>Cloudflare Workers Static Assets</h3>
+          <div class="code-block">
+            <button class="copy-btn" type="button">Copy</button>
+            <pre style="white-space: pre-wrap;">npx wrangler deploy</pre>
+          </div>
         </section>
 
         <section id="security" class="docs-section">

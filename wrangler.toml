@@ -1,0 +1,7 @@
+name = "printmux-site"
+main = "worker.js"
+compatibility_date = "2026-02-05"
+
+[assets]
+directory = "."
+binding = "ASSETS"
