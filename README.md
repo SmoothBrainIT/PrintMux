@@ -1,7 +1,6 @@
 # PrintMux
 
 ![PrintMux Logo](frontend/src/img/printmux-logo.png)
-
 PrintMux is an open-source middleware layer that lets slicers upload once and dispatch to many 3D printers. It presents both a Moonraker-compatible API and a minimal OctoPrint-compatible API for slicers, then routes jobs to one or more downstream printers from the web UI.
 
 ## Features
@@ -36,13 +35,13 @@ npm run dev
 
 ### Environment Variables
 Backend (via `.env` in the repo root):
-- `PRINTMUX_API_KEY` – API key for slicer access
-- `PRINTMUX_DATABASE_URL` – default `sqlite:///./printmux.db`
-- `PRINTMUX_STORAGE_DIR` – default `./storage`
-- `PRINTMUX_CORS_ORIGINS` – default `*`
+- `PRINTMUX_API_KEY` - API key for slicer access
+- `PRINTMUX_DATABASE_URL` - default `sqlite:///./printmux.db`
+- `PRINTMUX_STORAGE_DIR` - default `./storage`
+- `PRINTMUX_CORS_ORIGINS` - default `*`
 
 Frontend (via `frontend/.env`):
-- `VITE_API_BASE` – default `http://localhost:8000`
+- `VITE_API_BASE` - default `http://localhost:8000`
 
 See `.env.example` and `frontend/.env.example` for templates.
 
@@ -51,6 +50,10 @@ See `.env.example` and `frontend/.env.example` for templates.
 docker compose up --build
 ```
 
+Repo: https://github.com/SmoothBrainIT/PrintMux
+Website: https://printmux.com
+Docs: https://printmux.com/docs.html
+
 ### Docker Environment Overrides
 Update the root `.env` to customize (used automatically by Docker Compose):
 - `PRINTMUX_BACKEND_PORT` (default 8000)
@@ -58,6 +61,21 @@ Update the root `.env` to customize (used automatically by Docker Compose):
 - `VITE_API_BASE` (browser-facing backend URL)
 
 Note: `docker/.env.example` is kept for reference, but the root `.env` is the primary source of truth.
+
+## Website Deployment (Cloudflare Pages)
+- Root directory: `website`
+- Build command: `echo "no build"`
+- Output directory: `.`
+
+If you see a Wrangler "Missing entry-point" error, Pages is trying to deploy a Worker. Set the build command to `echo "no build"` and re-deploy.
+
+### Cloudflare Workers Static Assets (Alternative)
+```bash
+npx wrangler deploy
+```
+
+### Website Branch
+The public website now lives on a dedicated `website` branch that contains only the static site assets and Worker config.
 
 ## Caveats and Workarounds
 - Status polling times out per printer after 8 seconds to avoid UI hangs.
@@ -76,3 +94,6 @@ MIT. See `LICENSE`.
 
 ## Contributing
 See `CONTRIBUTING.md`.
+
+
+
