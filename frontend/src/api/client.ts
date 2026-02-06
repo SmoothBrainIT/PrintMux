@@ -90,9 +90,13 @@ export type ApiKeyResponse = {
 };
 
 const DEFAULT_BACKEND_PORT = import.meta.env.VITE_BACKEND_PORT ?? "8000";
+const RAW_HOST = import.meta.env.VITE_HOST;
 const DEFAULT_HOST =
-  import.meta.env.VITE_HOST ??
-  (typeof window === "undefined" ? "localhost" : window.location.hostname);
+  RAW_HOST && RAW_HOST.trim().length > 0
+    ? RAW_HOST
+    : typeof window === "undefined"
+      ? "localhost"
+      : window.location.hostname;
 const DEFAULT_PROTOCOL =
   typeof window === "undefined" ? "http:" : window.location.protocol;
 const API_BASE = `${DEFAULT_PROTOCOL}//${DEFAULT_HOST}:${DEFAULT_BACKEND_PORT}`;
