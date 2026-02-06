@@ -92,6 +92,13 @@ cd PrintMux</pre>
             <pre style="white-space: pre-wrap;">docker compose up -d</pre>
           </div>
           <ol style="line-height: 1.7;" start="7">
+            <li>Optional: set ports inline for a one-off run:</li>
+          </ol>
+          <div class="code-block">
+            <button class="copy-btn" type="button">Copy</button>
+            <pre style="white-space: pre-wrap;">PRINTMUX_BACKEND_PORT=8001 PRINTMUX_FRONTEND_PORT=5174 docker compose up -d</pre>
+          </div>
+          <ol style="line-height: 1.7;" start="8">
             <li>Open the UI in your browser:</li>
           </ol>
           <div class="code-block">
@@ -101,6 +108,7 @@ cd PrintMux</pre>
 
           <p style="margin-top: 1rem;"><strong>Notes</strong></p>
           <ul style="line-height: 1.6;">
+            <li>Ports are published by default and can be set via <code>.env</code> or inline.</li>
             <li>If you changed ports, update the URL accordingly.</li>
             <li>Use <code>CTRL + C</code> to stop the stack.</li>
             <li><code>.env.example</code> includes the full list of settings; the root <code>.env</code> is the source of truth.</li>
