@@ -33,7 +33,7 @@ const splitExtension = (filename: string) => {
 
 const MIT_LICENSE_TEXT = `MIT License
 
-Copyright (c) 2026 NexGen
+Copyright (c) 2026 https://github.com/SmoothBrainIT
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -1494,7 +1494,7 @@ export default function App() {
             <div>© 2026 PrintMux. All rights reserved.</div>
             <div style={{ display: "flex", gap: "0.75rem", alignItems: "center" }}>
               <a
-                href="https://github.com/your-org/your-repo"
+                href="https://github.com/SmoothBrainIT/PrintMux"
                 target="_blank"
                 rel="noreferrer"
                 style={{
