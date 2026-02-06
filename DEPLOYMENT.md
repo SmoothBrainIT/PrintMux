@@ -10,7 +10,7 @@ From the repo root:
 npx wrangler deploy
 ```
 
-This uses `wrangler.toml` and `website/worker.js` to serve static assets.
+This uses `wrangler.toml` and `worker.js` to serve static assets.
 
 ## Branch Note
 This branch contains only the static website assets for PrintMux.
@@ -18,7 +18,7 @@ This branch contains only the static website assets for PrintMux.
 ## Option 2: Git‑based Pages Deploy
 1. Push the repo to GitHub.
 2. In Cloudflare Pages, create a new project from the GitHub repo.
-3. Set the **Root directory** to `website`.
+3. Set the **Root directory** to `.` (repo root).
 4. Build command: `echo "no build"`
 5. Output directory: `.` (default).
 6. Deploy.
@@ -39,7 +39,7 @@ Cloudflare Pages will then deploy the static files directly without Wrangler.
 3. Ensure SSL is enabled (Cloudflare will provision automatically).
 
 ## Local Preview
-You can open `website/index.html` directly or use a static server:
+You can open `index.html` directly or use a static server:
 ```bash
-python -m http.server --directory website 8080
+python -m http.server --directory . 8080
 ```
