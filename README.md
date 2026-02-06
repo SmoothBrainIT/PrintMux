@@ -85,6 +85,7 @@ Port values control the published host ports:
 - `PRINTMUX_BACKEND_PORT` (default 8000)
 - `PRINTMUX_FRONTEND_PORT` (default 5173)
 - `VITE_API_BASE` (browser-facing backend URL)
+ - `VITE_HOST` (only if the UI is accessed via a FQDN, local or public)
 
 Note: `docker/.env.example` is kept for reference, but the root `.env` is the primary source of truth.
 

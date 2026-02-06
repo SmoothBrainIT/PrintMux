@@ -89,7 +89,14 @@ export type ApiKeyResponse = {
   api_key: string;
 };
 
-const API_BASE = import.meta.env.VITE_API_BASE ?? "http://localhost:8000";
+const DEFAULT_BACKEND_PORT = import.meta.env.VITE_BACKEND_PORT ?? "8000";
+const DEFAULT_HOST =
+  import.meta.env.VITE_HOST ??
+  (typeof window === "undefined" ? "localhost" : window.location.hostname);
+const DEFAULT_PROTOCOL =
+  typeof window === "undefined" ? "http:" : window.location.protocol;
+const DEFAULT_API_BASE = `${DEFAULT_PROTOCOL}//${DEFAULT_HOST}:${DEFAULT_BACKEND_PORT}`;
+const API_BASE = import.meta.env.VITE_API_BASE ?? DEFAULT_API_BASE;
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`${API_BASE}${path}`, {

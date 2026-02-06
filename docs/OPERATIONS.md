@@ -17,6 +17,7 @@
 - Configure `PRINTMUX_BACKEND_PORT` and `PRINTMUX_FRONTEND_PORT` in the root `.env` to change exposed ports,
   or set them inline before `docker compose up -d`.
 - `VITE_API_BASE` should match the browser-accessible backend URL.
+- `VITE_HOST` should only be set if the UI is accessed via a FQDN (local or public).
 
 ## Moonraker Compatibility
 - PrintMux uses Moonraker `/printer/info` and `/printer/objects/query`.
