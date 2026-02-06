@@ -19,7 +19,6 @@ services:
       context: ..
       dockerfile: docker/frontend.Dockerfile
     environment:
-      VITE_API_BASE: "${VITE_API_BASE:-}"
       VITE_BACKEND_PORT: "${PRINTMUX_BACKEND_PORT:-8000}"
       VITE_HOST: "${VITE_HOST:-}"
     ports:

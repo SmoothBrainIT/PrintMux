@@ -95,8 +95,7 @@ const DEFAULT_HOST =
   (typeof window === "undefined" ? "localhost" : window.location.hostname);
 const DEFAULT_PROTOCOL =
   typeof window === "undefined" ? "http:" : window.location.protocol;
-const DEFAULT_API_BASE = `${DEFAULT_PROTOCOL}//${DEFAULT_HOST}:${DEFAULT_BACKEND_PORT}`;
-const API_BASE = import.meta.env.VITE_API_BASE ?? DEFAULT_API_BASE;
+const API_BASE = `${DEFAULT_PROTOCOL}//${DEFAULT_HOST}:${DEFAULT_BACKEND_PORT}`;
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`${API_BASE}${path}`, {
