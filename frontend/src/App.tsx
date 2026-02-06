@@ -639,9 +639,28 @@ export default function App() {
   };
 
   const handleCopyApiKey = async () => {
-    if (!apiKey) return;
+    if (!apiKey) {
+      setApiKeyStatus("No API key to copy.");
+      return;
+    }
     try {
-      await navigator.clipboard.writeText(apiKey);
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(apiKey);
+      } else {
+        const textarea = document.createElement("textarea");
+        textarea.value = apiKey;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.focus();
+        textarea.select();
+        const copied = document.execCommand("copy");
+        document.body.removeChild(textarea);
+        if (!copied) {
+          throw new Error("Clipboard unavailable");
+        }
+      }
       setApiKeyStatus("API key copied.");
     } catch (error) {
       setApiKeyStatus(error instanceof Error ? error.message : "Failed to copy API key");
