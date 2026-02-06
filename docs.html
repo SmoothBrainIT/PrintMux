@@ -47,9 +47,21 @@
             with a unified dispatch UI.
           </p>
           <p><strong>Note:</strong> This branch contains only the public website assets.</p>
-          <p>Repo: https://github.com/SmoothBrainIT/PrintMux</p>
-          <p>Website: https://printmux.com</p>
-          <p>Docs: https://printmux.com/docs.html</p>
+          <div style="margin-top: 0.75rem;">
+            <a
+              class="btn btn-secondary repo-button"
+              href="https://github.com/SmoothBrainIT/PrintMux"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 2C6.48 2 2 6.58 2 12.24c0 4.52 2.87 8.35 6.85 9.7.5.1.68-.22.68-.49 0-.24-.01-1.04-.02-1.88-2.78.62-3.37-1.11-3.37-1.11-.45-1.2-1.11-1.52-1.11-1.52-.9-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.57 2.34 1.12 2.9.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.13-4.56-5.02 0-1.11.39-2.02 1.03-2.73-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.04.8-.23 1.65-.35 2.5-.35.85 0 1.7.12 2.5.35 1.91-1.32 2.75-1.04 2.75-1.04.55 1.4.2 2.44.1 2.7.64.71 1.03 1.62 1.03 2.73 0 3.9-2.35 4.76-4.58 5.01.36.32.69.95.69 1.92 0 1.39-.01 2.5-.01 2.84 0 .27.18.6.69.49 3.97-1.35 6.83-5.18 6.83-9.7C22 6.58 17.52 2 12 2z"
+                />
+              </svg>
+              GitHub Repo
+            </a>
+          </div>
         </section>
 
         <section id="quick-start" class="docs-section">
@@ -173,21 +185,6 @@ POST /server/files/upload</pre>
             per-printer timeout to avoid UI hangs.
           </p>
           <p>See <code>docs/OPERATIONS.md</code> for details.</p>
-          <h3>Cloudflare Pages</h3>
-          <ul style="line-height: 1.6;">
-            <li>Root directory: <code>.</code> (repo root)</li>
-            <li>Build command: <code>echo "no build"</code></li>
-            <li>Output directory: <code>.</code></li>
-          </ul>
-          <p style="margin-top: 0.5rem;">
-            If you see a Wrangler “Missing entry-point” error, Pages is trying to deploy a Worker.
-            Set the build command to <code>echo "no build"</code> and re-deploy.
-          </p>
-          <h3>Cloudflare Workers Static Assets</h3>
-          <div class="code-block">
-            <button class="copy-btn" type="button">Copy</button>
-            <pre style="white-space: pre-wrap;">npx wrangler deploy</pre>
-          </div>
         </section>
 
         <section id="security" class="docs-section">
@@ -200,15 +197,20 @@ POST /server/files/upload</pre>
 
         <section id="faq" class="docs-section">
           <h2>FAQ</h2>
-          <p><strong>Does PrintMux proxy webcam streams?</strong> Not yet.</p>
+          <p><strong>Does PrintMux proxy webcam streams?</strong> Not yet. But you can access Fluidd or Mainsail UI right from the PrintMux UI in a browser or in the OrcaSlicer "Device" tab.</p>
           <p><strong>Can I use Postgres?</strong> Yes, set <code>PRINTMUX_DATABASE_URL</code>.</p>
         </section>
       </div>
     </main>
 
     <footer class="footer container">
-      <div>© 2026 PrintMux. All rights reserved.</div>
-    </footer>
+  <div>© 2026 PrintMux. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="https://printmux.com">Website</a>
+    <span>�</span>
+    <a href="https://printmux.com/docs.html">Docs</a>
+  </div>
+</footer>
     <script>
       document.querySelectorAll(".code-block").forEach((block) => {
         const button = block.querySelector(".copy-btn");
@@ -234,3 +236,9 @@ POST /server/files/upload</pre>
     </script>
   </body>
 </html>
+
+
+
+
+
+

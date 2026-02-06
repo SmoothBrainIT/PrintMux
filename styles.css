@@ -191,6 +191,36 @@ header.site-header {
   font-size: 0.9rem;
 }
 
+.footer-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--ink);
+}
+
+.footer-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.footer-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+}
+
+.footer-links a {
+  color: inherit;
+  font-weight: 600;
+}
+
 /* Docs page */
 .docs-layout {
   display: grid;
@@ -263,6 +293,18 @@ header.site-header {
 .copy-btn[data-copied="true"] {
   background: rgba(26, 127, 55, 0.4);
   border-color: rgba(26, 127, 55, 0.9);
+}
+
+.repo-button {
+  gap: 0.5rem;
+  padding-left: 1.1rem;
+  padding-right: 1.1rem;
+}
+
+.repo-button svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
 }
 
 @media (max-width: 900px) {
