@@ -71,38 +71,39 @@
 cd PrintMux</pre>
           </div>
           <ol style="line-height: 1.7;" start="4">
-            <li>Update the root <code>.env</code> file (already included):</li>
+            <li>Copy the root <code>.env</code> file:</li>
           </ol>
           <div class="code-block">
             <button class="copy-btn" type="button">Copy</button>
-            <pre style="white-space: pre-wrap;">PRINTMUX_BACKEND_PORT=8000
-PRINTMUX_FRONTEND_PORT=5173
-VITE_API_BASE=http://localhost:8000</pre>
+            <pre style="white-space: pre-wrap;">cp .env.example .env</pre>
           </div>
           <ol style="line-height: 1.7;" start="5">
-            <li>
-              Optional: edit <code>docker/.env</code> to change ports.
-              Defaults are <code>8000</code> (backend) and <code>5173</code> (frontend).
-            </li>
-            <li>Build and start the stack:</li>
+            <li>Optional: edit <code>.env</code> for ports and settings:</li>
           </ol>
           <div class="code-block">
             <button class="copy-btn" type="button">Copy</button>
-            <pre style="white-space: pre-wrap;">docker compose up --build</pre>
+            <pre style="white-space: pre-wrap;">nano .env</pre>
+          </div>
+          <ol style="line-height: 1.7;" start="6">
+            <li>Start the stack:</li>
+          </ol>
+          <div class="code-block">
+            <button class="copy-btn" type="button">Copy</button>
+            <pre style="white-space: pre-wrap;">docker compose up -d</pre>
           </div>
           <ol style="line-height: 1.7;" start="7">
             <li>Open the UI in your browser:</li>
           </ol>
           <div class="code-block">
             <button class="copy-btn" type="button">Copy</button>
-            <pre style="white-space: pre-wrap;">http://localhost:5173</pre>
+            <pre style="white-space: pre-wrap;">http://host-ip:5173</pre>
           </div>
 
           <p style="margin-top: 1rem;"><strong>Notes</strong></p>
           <ul style="line-height: 1.6;">
             <li>If you changed ports, update the URL accordingly.</li>
             <li>Use <code>CTRL + C</code> to stop the stack.</li>
-            <li><code>docker/.env.example</code> is kept for reference; the root <code>.env</code> is the source of truth.</li>
+            <li><code>.env.example</code> includes the full list of settings; the root <code>.env</code> is the source of truth.</li>
           </ul>
 
           <h3 style="margin-top: 2rem;">Quick Start (Manual)</h3>
