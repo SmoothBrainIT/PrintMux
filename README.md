@@ -67,9 +67,9 @@ nano .env
 ```bash
 docker compose up -d
 ```
-Optional: expose ports on the host
+Optional: set ports inline for a one-off run (instead of editing `.env` and running the command above)
 ```bash
-docker compose -f docker-compose.yml -f docker-compose.ports.yml up -d
+PRINTMUX_BACKEND_PORT=8001 PRINTMUX_FRONTEND_PORT=5174 docker compose up -d
 ```
 6. Enjoy PrintMux!
 
@@ -78,8 +78,10 @@ Website: https://printmux.com
 Docs: https://printmux.com/docs.html
 
 ### Docker Environment Overrides
-Update the root `.env` to customize (used automatically by Docker Compose).
-Port values are only used if you include `docker-compose.ports.yml`:
+Ports are published by default.
+Update the root `.env` to customize (used automatically by Docker Compose),
+or set values inline before `docker compose up -d`.
+Port values control the published host ports:
 - `PRINTMUX_BACKEND_PORT` (default 8000)
 - `PRINTMUX_FRONTEND_PORT` (default 5173)
 - `VITE_API_BASE` (browser-facing backend URL)
